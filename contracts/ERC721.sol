@@ -85,6 +85,11 @@ contract ERC721 {
     return true;
   }
 
+   /* EIP165: Query if a contract implements another interface */
+  function supportsInterface(bytes4 _interfaceId) public pure virtual returns(bool) {
+    return _interfaceId == 0x80ac58cd;
+  }
+
   modifier isTokenValid(uint256 _tokenId) {
     require(owners[_tokenId] != address(0), 'token does not exists');
     _;
