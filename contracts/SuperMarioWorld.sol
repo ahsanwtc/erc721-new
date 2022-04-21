@@ -15,7 +15,7 @@ contract SuperMarioWorld is ERC721 {
   }
 
   /* Returns a URL which points to the metadata */
-  function tokeURI(uint256 _tokenId) public view isTokenValid(_tokenId) returns(string memory) {
+  function tokenURI(uint256 _tokenId) public view isTokenValid(_tokenId) returns(string memory) {
     return tokenURIs[_tokenId];
   }
 
