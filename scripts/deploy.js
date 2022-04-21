@@ -5,7 +5,7 @@ async function main() {
   const superMarioWorld = await SuperMarioWorld.deploy('SuperMario World', 'SPRM');
   await superMarioWorld.deployed();
   console.log(`SuperMario World deployed at: ${superMarioWorld.address}`);
-  await superMarioWorld.mint('https://ipfs.io/ipfs/QmasAgXS5sN6EiGXdjUgd1uAZ5oK2vaAeB7GGkQaixVa1w');
+  await superMarioWorld.mint('ipfs://QmaGdpuSNhU1mb2s6ZLr4TkEnHbHCiaf6rtMt8SoPeeKyt');
   console.log('NFT successfully minted');
 }
 

@@ -21,11 +21,11 @@ contract SuperMarioWorld is ERC721 {
 
   /* Creates a new NFT inside this collection */
   function mint(string memory _tokenURI) external {
+    tokenCount += 1;
     balances[msg.sender] += 1;
     owners[tokenCount] = msg.sender;
     tokenURIs[tokenCount] = _tokenURI;
     emit Transfer(address(0), msg.sender, tokenCount);
-    tokenCount += 1;
   }
 
   /* Implemendted ERC721Metadata so update the interface check funcionality */
