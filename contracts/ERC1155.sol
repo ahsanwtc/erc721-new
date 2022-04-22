@@ -65,6 +65,13 @@ contract ERC1155 {
     require(_checkOnBatchERC1155Received(), 'Receiver is not implemented');
   }
 
+  /* ERC165 complaint */
+  /* Tell everyone that we support ERC1165 function */
+  /* code for ERC1165 is 0xd9b67a26 */
+  function supportsInterface(bytes4 _interfaceId) public pure virtual returns(bool) {
+    return _interfaceId == 0xd9b67a26;
+  }
+
   function _checkOnERC1155Received() internal pure returns(bool) {
     /* oversimplified function */
     return true;
@@ -85,6 +92,4 @@ contract ERC1155 {
     _;
   }
 
-  
-  // function supportsInterface()
 }
