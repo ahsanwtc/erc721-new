@@ -15,7 +15,17 @@ contract ERC1155 {
     require(_owner != address(0), 'owner address is 0');
     return balances[_tokenId][_owner];
   }
-  // function balanceOfBatch()
+  
+  /* Gets the balance of multiple addresses tokens */
+  function balanceOfBatch(address[] memory _owners, uint256[] memory _tokenIds) public view returns(uint256[] memory) {
+    require(_owners.length == _tokenIds.length, 'owners and ids length mismatch');
+    uint256[] memory batchBalances = new uint256[](_owners.length);    
+    for (uint256 i = 0; i < _owners.length; i++) {
+      batchBalances[i] = balanceOf(_owners[i], _tokenIds[i]);
+    }
+    return batchBalances;
+  }
+
   // function setApprovalForAll()
   // function safeTransferFrom()
   // function safeBatchTransferFrom()
