@@ -1,16 +1,16 @@
 {
   "name" : "Luigi",
-  "description": "Luigi is Mario's slightly younger, taller fraternal twin brother and the deuteragonist of the Mario franchise",
-  "image" : "https://gateway.pinata.cloud/ipfs/QmYwWyw4S7yunAAAfod6xCQCuF858nm8Q1s8H87cpFUY5v",
+  "description": "Luigi is Mario's nervous and good-natured brother who has lived most of his life in Mario's shadow",
+  "image" : "ipfs://QmYwWyw4S7yunAAAfod6xCQCuF858nm8Q1s8H87cpFUY5v",
   "attributes": [
     {
       "trait_type": "Strength",
-      "value": 5,
+      "value": 6,
       "max_value": 10
     },
     {
       "trait_type": "Speed",
-      "value": 8,
+      "value": 10,
       "max_value": 10
     },
     {
@@ -20,8 +20,31 @@
     },
     {
       "trait_type": "Intelligence",
-      "value": 7,
+      "value": 5,
       "max_value": 10
+    },
+    {
+      "display_type": "boost_number",
+      "trait_type": "Jump",
+      "value": 1
+    },
+    {
+      "display_type": "boost_percentage",
+      "trait_type": "Speed",
+      "value": 20
+    },
+    {
+      "display_type": "number",
+      "trait_type": "Generation",
+      "value": 1
+    },
+    {
+      "trait_type": "Humble",
+      "value": "True"
+    },
+    {
+      "trait_type": "Kind",
+      "value": "True"
     }
   ]
 }
