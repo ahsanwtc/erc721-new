@@ -5,9 +5,12 @@ contract ERC1155 {
   /* Mapping from TokenId to account balances */
   mapping(uint256 => mapping(address => uint256)) internal balances;
 
+  /* Mapping from owner to operator approvals */
+  mapping(address => mapping(address => bool)) private operatorApprovals;
+
   // event TransferSingle()
   // event TransferBatch()
-  // event ApprovalForAll()
+  event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
   // event URI()
 
   /* Gets the balance of an address's tokens */
@@ -25,10 +28,19 @@ contract ERC1155 {
     }
     return batchBalances;
   }
+  
+  /* Checks if an address is an operator of another address */
+  function isApprovedForAll(address _owner, address _operator) public view returns(bool) {
+    return operatorApprovals[_owner][_operator];
+  }
 
-  // function setApprovalForAll()
+  /* It enables or disables an operator to manage all of msg.sender's assests */
+  function setApprovalForAll(address _operator, bool _approved) public {
+    operatorApprovals[msg.sender][_operator] = _approved;
+    emit ApprovalForAll(msg.sender, _operator, _approved);
+  }
+  
   // function safeTransferFrom()
   // function safeBatchTransferFrom()
-  // function isApprovedForAll()
   // function supportsInterface()
 }
