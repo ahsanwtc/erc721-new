@@ -7,10 +7,11 @@ contract ERC1155 {
     // event ApprovalForAll()
     // event URI()
 
-    // function safeTransferFrom() external   
-    // function safeBatchTransferFrom()
     // function balanceOf()
     // function balanceOfBatch()
     // function setApprovalForAll()
+    // function safeTransferFrom()
+    // function safeBatchTransferFrom()
     // function isApprovedForAll()
+    // function supportsInterface()
 }
