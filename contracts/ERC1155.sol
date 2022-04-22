@@ -8,7 +8,7 @@ contract ERC1155 {
   /* Mapping from owner to operator approvals */
   mapping(address => mapping(address => bool)) private operatorApprovals;
 
-  // event TransferSingle()
+  event TransferSingle(address indexed _operator, address indexed _from, address indexed _to, uint _amount);
   // event TransferBatch()
   event ApprovalForAll(address indexed _owner, address indexed _operator, bool _approved);
   // event URI()
@@ -39,8 +39,27 @@ contract ERC1155 {
     operatorApprovals[msg.sender][_operator] = _approved;
     emit ApprovalForAll(msg.sender, _operator, _approved);
   }
+
+  function _transfer(address _from, address _to, uint256 _tokenId, uint256 _amount) private {
+    /* an account can have more than one copy of a token */
+    uint256 fromBalance = balances[_tokenId][_from];
+    require(fromBalance >= _amount, 'insufficient balance');
+    balances[_tokenId][_from] -= _amount;
+    balances[_tokenId][_to] += _amount;
+  }
   
-  // function safeTransferFrom()
+  function safeTransferFrom(address _from, address _to, uint256 _tokenId, uint256 _amount) public virtual {
+    require(_from == msg.sender || isApprovedForAll(_from, msg.sender), 'msg.sender is not the owner or an operator');
+    require(_to != address(0), 'to address is 0');
+    _transfer(_from, _to, _tokenId, _amount);
+    emit TransferSingle(msg.sender, _from, _to, _amount);
+    require(_checkonERC1155Received(), 'Receiver is not implemented');
+  }
+
+  function _checkonERC1155Received() internal pure returns(bool) {
+    return true;
+  }
+
   // function safeBatchTransferFrom()
   // function supportsInterface()
 }
