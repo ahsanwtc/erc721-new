@@ -25,4 +25,8 @@ contract SuperMarioWorldERC1155 is ERC1155 {
     tokenURIs[tokenCount] = _uri;
     emit TransferSingle(msg.sender, address(0), msg.sender, tokenCount, _amount);
   }
+
+    function supportsInterface(bytes4 _interfaceId) public pure override returns(bool) {
+    return _interfaceId == 0xd9b67a26 || _interfaceId == 0x0e89341c;
+  }
 }
