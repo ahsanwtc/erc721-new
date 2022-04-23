@@ -5,7 +5,11 @@ const NFTCard = ({ nft }) => {
   return (
     <Card>
       <Photo style={{ backgroundImage: `url(${nft && nft.image})` }}/>
-      This is nft card
+      <div style={{ margin: 5 }}>
+        <CollectionText>{nft && nft.symbol}</CollectionText>
+        <Name>{nft && nft.name}</Name>
+        <Name style={{ float: 'right' }}>{`x${nft && nft.copies}`}</Name>
+      </div>
     </Card>
   );
 };
@@ -29,6 +33,17 @@ const Photo = styled.div`
   background-size: cover;
   border-radius: 10px;
   margin: auto;
+`;
+
+const CollectionText = styled.div`
+  font-size: 12px;
+  color: gray;
+`;
+
+const Name = styled.div`
+  font-size: 12px;
+  font-weight: bold;
+  display: inline;
 `;
 
 export default NFTCard;
