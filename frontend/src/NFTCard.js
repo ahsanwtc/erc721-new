@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const NFTCard = ({ nft }) => {
+const NFTCard = ({ nft, toggleModal }) => {
   return (
-    <Card>
+    <Card onClick={() => toggleModal()}>
       <Photo style={{ backgroundImage: `url(${nft && nft.image})` }}/>
       <div style={{ margin: 5 }}>
         <CollectionText>{nft && nft.symbol}</CollectionText>

@@ -1,8 +1,12 @@
-
+import { useState } from 'react';
 import styled from "styled-components";
 import NFTCard from "./NFTCard";
+import Modal from "./Modal";
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedNFT, setSelectedNFT] = useState(undefined);
+
   let nfts = [
     { name: 'Mario', symbol: 'SPMK', copies: 10, image: 'https://via.placeholder.com/150' },
     { name: 'Luigi', symbol: 'SPMK', copies: 10, image: 'https://via.placeholder.com/150' },
@@ -14,15 +18,23 @@ function App() {
     { name: 'Donkey Kong', symbol: 'SPMK', copies: 10, image: 'https://via.placeholder.com/150' }
   ];
 
+  const toggleModal = index => {
+    if (index >= 0) {
+      setSelectedNFT(nfts[index]);
+    }
+    setShowModal(!showModal);
+  };
+
   return (
     <div className="App">
       <Container>
         <Title>Super Mario World Collection</Title>
         <Subtitle>The rarest and the best of Super Mario World</Subtitle>
         <Grid>
-          {nfts.map((nft, index) => <NFTCard key={index} nft={nft} />)}
+          {nfts.map((nft, index) => <NFTCard key={index} nft={nft} toggleModal={() => toggleModal(index)} />)}
         </Grid>
       </Container>
+      {showModal && <Modal nft={selectedNFT} toggleModal={toggleModal} />}      
     </div>
   );
 };
