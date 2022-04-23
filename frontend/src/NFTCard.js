@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const NFTCard = ({ nft }) => {
-  console.log(nft);
   return (
     <Card>
       <Photo style={{ backgroundImage: `url(${nft && nft.image})` }}/>
@@ -25,7 +24,7 @@ const Card = styled.div`
   cursor: pointer;
 `;
 
-const Photo = styled.div`
+export const Photo = styled.div`
   display: block;
   width: 200px;
   height: 200px;
