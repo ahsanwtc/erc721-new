@@ -52,6 +52,10 @@ const Content = styled.div`
   background-color: white;
   border-radius: 20px;
   padding: 20px;
+
+  @media(max-width: 900px) {
+    width: 400px;
+  }
 `;
 
 const Title = styled.h1`
@@ -71,6 +75,10 @@ const Grid = styled.div`
   display: inline-grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 40px;
+
+  @media(max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Button = styled.span`
