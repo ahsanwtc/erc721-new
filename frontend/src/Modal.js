@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Photo } from "./NFTCard";
+import ProgressBar from "./ProgressBar";
 
 const Modal = ({ nft, toggleModal }) => {
   return (
@@ -19,6 +20,7 @@ const Modal = ({ nft, toggleModal }) => {
                   <AttributeText>{attribute.trait_type}</AttributeText>
                   <AttributeText style={{ float: 'right' }}>{attribute.value}</AttributeText>
                 </div>
+                <ProgressBar percent={attribute.value * 10}/>
               </div>
             )}
           </div>

@@ -2,10 +2,7 @@ import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import NFTCard from "./NFTCard";
 import Modal from "./Modal";
-import { ethers } from 'ethers';
 import { connect, getNFTs } from './helpers';
-
-const axios = require('axios');
 
 
 const initalNFTs = [
@@ -37,59 +34,6 @@ function App() {
 
     init();
   }, []);
-
-  // const getNFTs = async address => {
-  //   const rpc = process.env.REACT_APP_RPC;
-  //   const ehtersProvider = ethers.providers.JsonRpcProvider(rpc);
-  //   const abi = [
-  //     'function symbol() public view returns(string memory)',
-  //     'function tokenCount() public view returns(uint)',
-  //     'function name() public view returns(string memory)',
-  //     'function uri(uint256 _tokenId) public view returns(string memory)',
-  //     'function balanceOfBatch(address[] memory accounts, uint256[] memory _tokenIds) public view returns(uint256[] memory)'
-  //   ];
-
-  //   const nftCollection = new ethers.Contract(
-  //     SuperMarioWorldCollectionContractAddress,
-  //     abi,
-  //     ehtersProvider
-  //   );
-
-  //   const numberOfNFTs = (await nftCollection.tokenCount()).toNumber();
-  //   const symbol = await nftCollection.symbol();
-  //   const accounts = Array(numberOfNFTs).fill(address);
-  //   const tokenIds = Array.from({ length: numberOfNFTs }, (_, i) => i + 1);
-  //   const copies = await nftCollection.balanceOfBatch(accounts, tokenIds);
-
-  //   const tempArray = [];
-  //   let baseURI = '';
-
-  //   for (let i = 1; i <= numberOfNFTs; i++) {
-  //     if (i === 1) {
-  //       /* uri: ipfs.com/ipfs/asdasdasdasd/1.json */
-  //       const tokenURI = await nftCollection.uri(i);
-  //       baseURI = tokenURI.replace(/\d+.json/, '');
-  //       let metadata = await getMetadataFromIpfs(tokenURI);
-  //       metadata.symbol = symbol;
-  //       metadata.copies = copies[i - 1];
-  //       tempArray.push(metadata);
-  //       continue;
-  //     }
-
-  //     let metadata = await getMetadataFromIpfs(`${baseURI}${i}.json`);
-  //     metadata.symbol = symbol;
-  //     metadata.copies = copies[i - 1];
-  //     tempArray.push(metadata);
-
-  //   }
-
-  //   setNFTs(tempArray);
-  // };
-
-  // const getMetadataFromIpfs = async uri => {
-  //   const { data } = await axios.get(uri);
-  //   return data;
-  // };
 
   const toggleModal = index => {
     if (index >= 0) {
